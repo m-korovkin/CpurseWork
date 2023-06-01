@@ -27,7 +27,13 @@ class HTTPServer:
 
     def serve_client(self, client_socket):
         data = client_socket.recv(1024).decode('utf-8')
-        #print(data)
+        try:
+            var = data[0]
+            #print(data)
+        except IndexError as e:
+            print(f'[{datetime.datetime.now()}] [ERROR] [{e}]')
+            client_socket.shutdown(socket.SHUT_WR)
+
         request = self.parse_request(data)
         response_data = self.handle_request(request)
         response = f'HTTP/1.1 {response_data.status} {response_data.reason}\r\n'
@@ -45,24 +51,20 @@ class HTTPServer:
     def parse_request(self, data):
         query, body = None, None
         data_array = data.split()
-        #print(f'\n{data_array}\n')
-        try:
-            method, target, version = data_array[0], data_array[1], data_array[2]
-            if str(target).find('?') != -1:
-                query = target[str(target).find('?')+1:]
-                target = target[:str(target).find('?')]
-            if target == '/': target = f'/{config.mainPageName}'
-            headers_array = data_array[3:]        
-            for element in data_array:
-                if 'Content-Length' in str(element):
-                    body = headers_array.pop(-1)
-                    print(f'[{datetime.datetime.now()}] "{method} {target} {version} {query} {body}"')
-                    return Request(method, target, version, headers_array, body=body)
-            else:
+        method, target, version = data_array[0], data_array[1], data_array[2]
+        if str(target).find('?') != -1:
+            query = target[str(target).find('?')+1:]
+            target = target[:str(target).find('?')]
+        if target == '/': target = f'/{config.mainPageName}'
+        headers_array = data_array[3:]        
+        for element in data_array:
+            if 'Content-Length' in str(element):
+                body = headers_array.pop(-1)
                 print(f'[{datetime.datetime.now()}] "{method} {target} {version} {query} {body}"')
-                return Request(method, target, version, headers_array, query=query)
-        except IndexError as e:
-            print(f'[{datetime.datetime.now()}] [ERROR] {e}')
+                return Request(method, target, version, headers_array, body=body)
+        else:
+            print(f'[{datetime.datetime.now()}] "{method} {target} {version} {query} {body}"')
+            return Request(method, target, version, headers_array, query=query)
 
  
     def handle_request(self, request):
@@ -94,6 +96,7 @@ class HTTPServer:
             status, reason = '200', 'OK'
             headers = [('Content-Type', content_type), ('Content-Length', len(body))]
         except Exception as err:
+            raise err
             print(err)
             body = 'Sorry, bro! No page...'.encode('utf-8')
             content_type = 'text/html; charset=uft-8'
@@ -103,9 +106,10 @@ class HTTPServer:
 
 
 if __name__ == '__main__':
-    host = sys.argv[1]
-    port = int(sys.argv[2])
+    # host = sys.argv[1] # ip address
+    host = '127.0.0.1'
+    # port = int(sys.argv[2])
+    port = 53210
     
     serv = HTTPServer(host, port)
-    # print('Object of the srver class successfuly created!')
     serv.run_server()

@@ -1,6 +1,6 @@
 import datetime
 import db
-from models import Trip, Response
+from models import *
 from config import *
 
 
@@ -61,7 +61,7 @@ def handleLoginAdmin(request):
         body = body.encode('utf-8')
     else:
         status, reason = '401', 'Unauthorized'
-        with open(f'{config.directoryName}admin.html', 'rb') as file:
+        with open(f'{config.directoryName}/admin_login.html', 'rb') as file:
             body = file.read()
     headers = [('Content-Type', contentType),
                ('Content-Length', len(body))]
@@ -70,9 +70,16 @@ def handleLoginAdmin(request):
 
 def handleGetTickets(request):
     """
-    поиск автобусов, соответствующих запросу пользователя и отображение их на странице
+    поиск автобусов, соответствующих запросу пользователя и отображение их на странице.
     """
     query = [i.split('=') for i in request.query.split('&')]
+
+    data = db.tripGetAll() # Запрос на все записи и сравнение внутри WSGI. ##### TODO: Изменить запрос
+    if not data:
+        data = tripList
+        for el in data:
+            print(el.date)
+        print(el)
     route, date, quantity = query[0][1], query[1][1], query[2][1]
     cityA, cityB = '', ''
     for city in citiesScheme:
@@ -83,15 +90,15 @@ def handleGetTickets(request):
 
     routesFromDB = [Trip('01', 'Москва', 'Нижний Новгород', '2023-06-19', '17:30', '1999', '11111001011000010100', '10', '3'), Trip('02', 'Санкт-Петербург', 'Москва', '2023-06-06', '09:45', '1400', '00001100000000111101', '229', '3')]
     returnList = []
-    print(returnList)
-    for trip in routesFromDB:
-        print(f"trip.cityFrom {trip.cityFrom} : cityA {cityA} : trip.cityTo {trip.cityTo} : cityB {cityB} : trip.date {trip.date} : date {date}")
+    for trip in data:
+        # print(type(trip))
+        # print(f"trip.cityFrom {trip.cityFrom} : cityA {cityA} | trip.cityTo {trip.cityTo} : cityB {cityB} | trip.date {trip.date} : date {date}")
         if str(trip.cityFrom) == str(cityA) and str(trip.cityTo) == str(cityB) and str(trip.date) == str(date):
             returnList.append(trip.id)
-  
+    # print(returnList)
     body = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Фирма</title><link rel="stylesheet" href="style.css"></head><body><div class="main"><form action="getTicketsList" method="get"><div class="second"><div class="route"><div><div class="where_wrapper"><div class="where_block"><label class="where_label">Выберите маршрут:</label><div class="block_box"><select tabindex="1" class="box" name="route"> <option value="mn" selected>Москва - Нижний Новгород</option><option value="mp">Москва - Санкт-Петербург</option><option value="nm">Нижний Новгород - Москва</option><option value="mp">Нижний Новгород - Санкт-Петербург</option><option value="pm">Санкт-Петербург - Москва</option><option value="pn">Санкт-Петербург - Нижний Новгород</option></select></div></div></div></div></div><div class="data"><div class="data2"><form><p class="calendar_p">Выберите дату:<input tabindex="2" class="calendar" type="date" name="calendar" value="01-06-2023" max="05-06-2023" min="05-05-2023"></p></form></div></div><div class="passengers"><div class="passengers_2"><label class="passengers_label">Пассажиры:</label><div class="pass_block"><select tabindex="3" class="pass" name="quantity"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div></div></div><div class="find"><button class="find_button" role="button" type="submit"><span>Найти билет</span></button></div></div></form></div>'
     for uniqID in returnList:
-        for trip in routesFromDB:
+        for trip in data:
             if trip.id == uniqID:
                 content = f'<div class="ticket"><div class="tick"><div class="ticket_noprice"><div class="trip"><label class="trip_label">{trip.cityFrom} - {trip.cityTo}</label></div><div class="inf"><label class="bus_num">Автобус номер {trip.busNumber}</label><label class="station_num">Вокзал номер {trip.stationNumber}</label></div></div><div class="sep"></div><div class="ticket_price"><div class="price"><label class="label_price">{trip.price}</label></div><div class="ticket_date"><label>{trip.date}</label></div></div><div class="sep"></div><div class="block_btn"><form method="post" action="choosePlace"><input type="text" name="choosePlace" value="{trip.id}" hidden><button value="uniqID03" class="choose_btn" role="button" type="submit"><span>Выбрать билет</span></button></form></div></div></div>'
                 body += content

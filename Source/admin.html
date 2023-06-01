@@ -2,27 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Форма</title>
-    <link rel="stylesheet" href="form.css">
+    <title>Админ Панель</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-<div class="form-block-left">
-    <form action="enterAdminPanel" method="post" class="railway">
-        <h3>Введите данные:</h3>
-        <span></span>
-        <div class="form-group">
-            <div class="block-input">
-                <input name="name" type="text"/>
-            </div>
-            <div class="block-input">
-                <input name="password" type="password"/>
-            </div>
-        </div>
-        <div class="submit-button">
-            <input class="button" type="submit" value="Отправить">
-        </div>
-    </form>
-</div>
+<h1>Панель администратора</h1>
+
+<h1>Создание нового маршрута</h1>
+<form class="main_admin_block" method="post">
+  <label  class="admin_label">Выберите город, из которого будет выезжать автобус:</label><br><br>
+  <div class="admin_block">
+    <select class="cities">
+      <option selected>Санкт-Петербург</option>
+      <option>Москва</option>
+        <option>Нижний Новгород</option>
+      <option>Казань</option>
+        <option>Кострома</option>
+      <option>Ярославль</option>
+      <option>Иваново</option>
+      <option>Воронеж</option>
+      <option>Екатеринбург</option>
+      <option>Муром</option>
+    </select>
+  </div>
+  <label  class="admin_label">Выберите город, в который будет ехать автобус:</label><br><br>
+  <div class="admin_block">
+    <select class="cities">
+      <option selected>Москва</option>
+        <option>Санкт-Петербург</option>
+      <option>Нижний Новгород</option>
+      <option>Казань</option>
+      <option>Кострома</option>
+      <option>Ярославль</option>
+      <option>Иваново</option>
+      <option>Воронеж</option>
+      <option>Екатеринбург</option>
+      <option>Муром</option>
+    </select>
+  </div>
+  <label  class="admin_label_1">Выберите дату:</label>
+    <div class="calendar_block">
+        <input class="calendar" type="date" name="calendar" value="01-06-2023"
+                         max="05-06-2023" min="05-05-2023">
+    </div>
+  <label  class="admin_label">Выберите время рейса:</label><br><br>
+  <div class="admin_block">
+    <select class="time">
+      <option selected>9:45</option>
+        <option>14:00</option>
+      <option>17:30</option>
+    </select>
+  </div>
+  <label  class="admin_label">Выберите цену рейса:</label><br><br>
+  <div class="admin_block">
+    <select class="money">
+      <option selected>2000</option>
+        <option>3000</option>
+      <option>4000</option>
+        <option>5000</option>
+    </select>
+  </div>
+  <label  class="admin_label">Укажите номер автобуса:</label><br><br>
+  <div class="admin_block">
+    <select class="money">
+      <option selected>15</option>
+        <option>16</option>
+      <option>17</option>
+        <option>18</option>
+    </select>
+  </div>
+  <label  class="admin_label">Укажите номер вокзала:</label><br><br>
+  <div class="admin_block">
+    <select class="money">
+      <option selected>1</option>
+        <option>2</option>
+      <option>3</option>
+    </select>
+  </div>
+  <div class="send">
+    <button class="add">Добавить маршрут</button>
+  </div>
+</form>
 
 </body>
 </html>
