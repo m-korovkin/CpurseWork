@@ -1,3 +1,16 @@
+class Trip:
+    def __init__(self, id, cityFrom, cityTo, date, time, price, free_places, busNumber, stationNumber):
+    	self.id = id
+    	self.cityFrom = cityFrom
+    	self.cityTo = cityTo
+    	self.date = date
+    	self.time = time
+    	self.price = price
+    	self.free_places = free_places
+    	self.busNumber = busNumber
+    	self.stationNumber = stationNumber
+
+
 class Request:
     def __init__(self, method, target, version, headers, query=None, body=None):
         self.method = method
@@ -6,6 +19,7 @@ class Request:
         self.headers = headers
         self.query = query
         self.body = body
+
 
 class Response:
     def __init__(self, status, reason, headers=None, body=None):

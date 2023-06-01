@@ -1,13 +1,14 @@
 .main{
-    width: 980px;
+    width: 1350px;
     height: 60px;
     text-align: center;
     margin: auto;
     font-size: 14px;
+
 }
 
 .second{
-    width: 980px;
+    width: 1350px;
     height: 60px;
     text-align: center;
     position: relative;
@@ -15,66 +16,41 @@
 
 }
 
-.from{
-    width: 195px;
+
+
+.route{
+    width: 550px;
     height: 60px;
-    border: 1px solid black;
+
     position: relative;
 }
+
+.block_box{
+    padding-top: 15px;
+    padding-left: 180px;
+}
+
+
+.box {
+      width: 310px;
+      height: 30px;
+      font-size: 15px;
+      color: black;
+      background-color: #eee;
+      border-radius: 5px;
+      box-shadow: 4px 4px #ccc;
+      }
 
 .wrapper{
 
     position: relative;
 }
 
-.wrapper2{
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    min-height: 56px;
-    font-size: 16px;
-    cursor: text;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-    transition-property: all;
-}
-
-.label1{
-
-    position: absolute;
-    left: 12px;
-    z-index: 1;
-    margin-top: 0;
-    overflow-x: hidden;
-    font-size: 16px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    pointer-events: none;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-    transition-property: all;
-    transform: translateY(20px);
-}
-
-.span1{
-    width: 100%;
-}
-
-.hide{
-    word-wrap: break-word;
-    -webkit-nbsp-mode: space;
-    line-break: after-white-space;
-    -webkit-user-modify: read-write-plaintext-only;
-}
-
-
 .where{
     position: relative;
     flex-grow: 1;
     flex-shrink: 1;
-    border: 1px solid black;
+
 }
 
 .where_wrapper{
@@ -96,11 +72,11 @@
 
 .where_label{
     position: absolute;
-    left: 12px;
+    left: 15px;
     z-index: 1;
     margin-top: 0px;
     overflow-x: hidden;
-    font-size: 16px;
+    font-size: 20px;
     text-overflow: ellipsis;
     white-space: nowrap;
     pointer-events: none;
@@ -111,62 +87,38 @@
     transform: translateY(20px);
 }
 
-.where_span{
-    width: 100%;
-}
 
 .data{
     position: relative;
     flex-grow: 1;
+    width:
     flex-shrink: 1;
-    border: 1px solid black;
+
+    width: 300px;
 }
 
 .data2{
     position: relative;
 }
 
-.data3{
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    min-height: 56px;
-    font-size: 16px;
-    cursor: text;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-    transition-property: all;
+.calendar{
+    font-size: 20px;
+    color: black;
 }
 
-.data_label{
-
-    font-size: 12px;
-    transform: translateY(10px);
-    position: absolute;
-    left: 12px;
-    z-index: 1;
-    max-width: calc(100% - 40px);
-    margin-top: 0px;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    pointer-events: none;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-    transition-property: all;
+.calendar_p{
+    font-size: 20px;
 }
 
-.data_span2{
-    width: 100%;
-}
+
+
 
 .passengers{
     position: relative;
     flex-grow: 1;
     flex-shrink: 1;
-    border: 1px solid black;
+
+    width: 150px;
 }
 
 .passengers_2{
@@ -183,7 +135,9 @@
 }
 
 .passengers_label{
-    font-size: 12px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 15px;
     transform: translateY(10px);
     position: absolute;
     left: 12px;
@@ -199,40 +153,37 @@
     transition-property: all;
 }
 
-.passengers_span{
-    width: 100%;
+
+.pass_block{
+    width: 254px;
+    height: 60px;
+    padding-top: 20px;
+    padding-left: 40px;
+
 }
 
-.man{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    width: 34px;
-    font-size: 16px;
-    pointer-events: none;
+.pass{
+    width: 30px;
+    height: 25px;
+    font-size: 15px;
+    width: 50px;
+    color: black;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 4px 4px #ccc;
+
 }
 
-.man2{
-    color: rgb(249, 37, 63);
-}
+
 
 input{
     border: 1px white;
 }
 
 
-
-.find{
-    position: relative;
-    flex-grow: 1;
-    flex-shrink: 1;
-}
-
 .find_button{
     display: inline-block;
-    width: auto;
-    font-weight: normal;
+    width: 150px;
     text-align: center;
     text-decoration-line: none;
     text-decoration: none;
@@ -241,11 +192,6 @@ input{
     touch-action: manipulation;
     cursor: pointer;
     -webkit-user-select: none;
-    background-image: none;
-    border-top-width: 0px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
     border-top-style: initial;
     border-right-style: initial;
     border-bottom-style: initial;
@@ -266,8 +212,7 @@ input{
     overflow-x: hidden;
     overflow-y: hidden;
     transform: translate3d(0px, 0px, 0px);
-    padding-top: 13px;
-    padding-right: 30px;
+    height: 60px;
     font-size: 16px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -281,3 +226,195 @@ input{
     will-change: transform;
 
 }
+
+.map{
+    text-align: center;
+    padding-top: 5%;
+}
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  text-decoration: none;    
+}
+.btn-2 {
+  background: rgb(96,9,240);
+  background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
+  border: none;
+  text-decoration: none;
+}
+.btn-2:before {
+  height: 0%;
+  width: 2px;
+  text-decoration: none;
+}
+.btn-2:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .5),
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+
+  text-decoration: none;
+}
+
+.ticket{
+    width: 1350px;
+    height: 150px;
+    margin: auto;
+    font-size: 14px;
+    border: 1px solid black;
+}
+
+.tick{
+    width: 1350px;
+    height: 150px;
+
+    position: relative;
+    display: flex;
+
+}
+
+.ticket_noprice{
+    width: 1000px;
+    height: 150px;
+
+}
+
+.ticket_price{
+    width: 350px;
+    height: 150px;
+
+    text-align: center;
+}
+
+.trip{
+    width: 700px;
+    height: 100px;
+
+    text-align: center;
+
+}
+
+.inf{
+    width: 700px;
+    height: 50px;
+
+    text-align: center;
+
+}
+
+.price{
+    width: 300px;
+    height: 100px;
+
+}
+
+.ticket_date{
+    width: 300px;
+    height: 50px;
+
+}
+
+.trip_label{
+    font-size: 30px;
+
+}
+
+.separation{
+    width: 2px;
+    min-height: 35px;
+    background-color: transparent;
+    background-size: 6px;
+}
+
+.bus_num{
+    padding-right: 30%;
+    font-size: 20px;
+}
+
+.station_num{
+     font-size: 20px;
+}
+
+
+
+.label_price{
+    font-size: 30px;
+}
+
+.block_btn{
+
+
+    height: 200px;
+
+
+}
+
+.choose_btn{
+
+    display: inline-block;
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    text-decoration-line: none;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    border-top-style: initial;
+    border-right-style: initial;
+    border-bottom-style: initial;
+    border-left-style: initial;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-bottom-color: initial;
+    border-left-color: initial;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    outline-width: 0px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(249, 37, 63);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transform: translate3d(0px, 0px, 0px);
+
+    font-size: 16px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    line-height: 20px;
+    transition-duration: 0.28s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    transition-property: all;
+    will-change: transform;
+}
+
+.ticket_date{
+    font-size: 20px;
+}
+
+.sep{
+    border: 1px solid black;
+}
+

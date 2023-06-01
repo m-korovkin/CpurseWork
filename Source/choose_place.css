@@ -1,0 +1,114 @@
+.seatmap{
+    height: 630px;
+    width: 900px;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.seatmap_title{
+    width: 900px;
+    height: 35px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.free_or_not{
+    width: 900px;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    padding-top: 10px;
+}
+
+.free{
+   padding-left: 25%;
+   padding-top: 0.5%;
+
+
+}
+
+.not_free{
+   padding-left: 25%;
+   padding-top: 0.5%;
+}
+
+.span_free{
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid #32c453;
+}
+
+.span_not_free{
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid #f70a0a;
+}
+
+.tir{
+    width: 900px;
+    height: 400px;
+}
+
+.tir_2{
+    width: 900px;
+    height: 400px;
+    margin-top: 10px;
+}
+
+.tir_3{
+    display: flex;
+    width: 900px;
+    height: 400px;
+}
+
+.tir_4{
+    width: 742px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    flex-decoration: column;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+}
+
+.first_row{
+    width: 644px;
+    height: 46px;
+    padding-left: 20%;
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+    flex-wrap: wrap;
+    flex-direction: row;
+    display: flex;
+}
+
+.ticket_place{
+    width: 58px;
+    height: 58px;
+    position: relative;
+    display: inline-block;
+    margin: 8px;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: top;
+}
+
+
+.ticket_place > div{
+    height: 5px;
+    width: 5px;
+    font-size: 20px;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+

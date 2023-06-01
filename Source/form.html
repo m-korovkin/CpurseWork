@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+<div class="form-block-left">
+    <form action="index.php" method="post" class="railway">
+        <h3>Введите данные:</h3>
+        <span></span>
+        <div class="form-group">
+            <div class="block-input">
+                <input name="name"  onfocus="if(this.value=='ФИО') this.value='';" onblur="if(!this.value)this.value='ФИО';" type="text" value="ФИО"/>
+            </div>
+            <div class="block-input">
+                <input name="email" onfocus="if(this.value=='Серия и номер паспорта') this.value='';" onblur="if(!this.value)this.value='Серия и номер паспорта';" type="text" value="Серия и номер паспорта"/>
+            </div>
+            <div class="block-input">
+                <input name="phone" onfocus="if(this.value=='Номер телефона') this.value='';" onblur="if(!this.value)this.value='Номер телефона';" type="tel" value="Номер телефона"/>
+            </div>
+        </div>
+        <div class="submit-button">
+            <input class="button" type="submit" value="Отправить">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
