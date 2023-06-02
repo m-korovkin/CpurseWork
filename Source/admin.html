@@ -9,35 +9,35 @@
 <h1>Панель администратора</h1>
 
 <h1>Создание нового маршрута</h1>
-<form class="main_admin_block" method="post">
+<form class="main_admin_block" method="post" action="createTicket">
   <label  class="admin_label">Выберите город, из которого будет выезжать автобус:</label><br><br>
   <div class="admin_block">
-    <select class="cities">
-      <option selected>Санкт-Петербург</option>
-      <option>Москва</option>
-        <option>Нижний Новгород</option>
-      <option>Казань</option>
-        <option>Кострома</option>
-      <option>Ярославль</option>
-      <option>Иваново</option>
-      <option>Воронеж</option>
-      <option>Екатеринбург</option>
-      <option>Муром</option>
+    <select name="cityFrom" class="cities">
+      <option value="s" selected>Санкт-Петербург</option>
+      <option value="m">Москва</option>
+      <option value="n">Нижний Новгород</option>
+      <option value="kz">Казань</option>
+      <option value="ko">Кострома</option>
+      <option value="iar">Ярославль</option>
+      <option value="iv">Иваново</option>
+      <option value="v">Воронеж</option>
+      <option value="ekb">Екатеринбург</option>
+      <option value="mur">Муром</option>
     </select>
   </div>
   <label  class="admin_label">Выберите город, в который будет ехать автобус:</label><br><br>
   <div class="admin_block">
-    <select class="cities">
-      <option selected>Москва</option>
-        <option>Санкт-Петербург</option>
-      <option>Нижний Новгород</option>
-      <option>Казань</option>
-      <option>Кострома</option>
-      <option>Ярославль</option>
-      <option>Иваново</option>
-      <option>Воронеж</option>
-      <option>Екатеринбург</option>
-      <option>Муром</option>
+    <select name="cityTo" class="cities">
+      <option value="m" selected>Москва</option>
+      <option value="s">Санкт-Петербург</option>
+      <option value="n">Нижний Новгород</option>
+      <option value="kz">Казань</option>
+      <option value="ko">Кострома</option>
+      <option value="iar">Ярославль</option>
+      <option value="iv">Иваново</option>
+      <option value="v">Воронеж</option>
+      <option value="ekb">Екатеринбург</option>
+      <option value="mur">Муром</option>
     </select>
   </div>
   <label  class="admin_label_1">Выберите дату:</label>
@@ -47,40 +47,40 @@
     </div>
   <label  class="admin_label">Выберите время рейса:</label><br><br>
   <div class="admin_block">
-    <select class="time">
-      <option selected>9:45</option>
-        <option>14:00</option>
-      <option>17:30</option>
+    <select name="time" class="time">
+      <option value="09:45" selected>9:45</option>
+      <option value="14:00">14:00</option>
+      <option value="17:30">17:30</option>
     </select>
   </div>
   <label  class="admin_label">Выберите цену рейса:</label><br><br>
   <div class="admin_block">
-    <select class="money">
-      <option selected>2000</option>
-        <option>3000</option>
-      <option>4000</option>
-        <option>5000</option>
+    <select name="price" class="money">
+      <option value="2000" selected>2000</option>
+      <option value="3000">3000</option>
+      <option value="4000">4000</option>
+      <option value="5000">5000</option>
     </select>
   </div>
   <label  class="admin_label">Укажите номер автобуса:</label><br><br>
   <div class="admin_block">
-    <select class="money">
-      <option selected>15</option>
-        <option>16</option>
-      <option>17</option>
-        <option>18</option>
+    <select name="bus_number" class="money">
+      <option value="15" selected>15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
     </select>
   </div>
   <label  class="admin_label">Укажите номер вокзала:</label><br><br>
   <div class="admin_block">
-    <select class="money">
-      <option selected>1</option>
-        <option>2</option>
-      <option>3</option>
+    <select name="vokzal_number" class="money">
+      <option value="1" selected>1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
     </select>
   </div>
   <div class="send">
-    <button class="add">Добавить маршрут</button>
+    <button value="btn_submit" type="submit" class="add">Добавить маршрут</button>
   </div>
 </form>
 
