@@ -13,6 +13,7 @@ class HTTPServer:
         # self.blacklist = []
 
     def run_server(self):
+        print("Server is running...")
         try:
             server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             server_socket.bind((self.ip, self.port))
@@ -22,31 +23,33 @@ class HTTPServer:
             while True:
                 client_socket, address = server_socket.accept()
                 self.serve_client(client_socket)
-        except KeyboardInterrupt:
+        except KeyboardInterrupt as exit:
             server_socket.close()
+            print("[!] Server successfully closed. Bye!")
 
     def serve_client(self, client_socket):
         data = client_socket.recv(1024).decode('utf-8')
         try:
             var = data[0]
             #print(data)
+            request = self.parse_request(data)
+            response_data = self.handle_request(request)
+            response = f'HTTP/1.1 {response_data.status} {response_data.reason}\r\n'
+            if response_data.headers:
+                for (key, value) in response_data.headers:
+                    response += f'{key}: {value}\r\n'
+            response += '\r\n'
+            #print(response)
+            response = response.encode('utf-8')
+            if response_data.body:
+                response = response + response_data.body
+            client_socket.send(response)
+            client_socket.shutdown(socket.SHUT_WR)
         except IndexError as e:
             print(f'[{datetime.datetime.now()}] [ERROR] [{e}]')
             client_socket.shutdown(socket.SHUT_WR)
 
-        request = self.parse_request(data)
-        response_data = self.handle_request(request)
-        response = f'HTTP/1.1 {response_data.status} {response_data.reason}\r\n'
-        if response_data.headers:
-            for (key, value) in response_data.headers:
-                response += f'{key}: {value}\r\n'
-        response += '\r\n'
-        #print(response)
-        response = response.encode('utf-8')
-        if response_data.body:
-            response = response + response_data.body
-        client_socket.send(response)
-        client_socket.shutdown(socket.SHUT_WR)
+        
 
     def parse_request(self, data):
         query, body = None, None
@@ -76,6 +79,10 @@ class HTTPServer:
                 return wsgi.handleGetTickets(request)
             elif 'GET' in str(request.method) and '/index.html' in str(path):
                 return wsgi.handleGetAllTickets(request)
+            elif 'GET' in str(request.method) and '/tickets.html' in str(path):
+                return wsgi.handleGetAllTicketsAdmin(request)
+            elif 'POST' in str(request.method) and 'createTicket' in str(path):
+                return wsgi.handleCreateTicket(request)
             elif 'POST' in str(request.method) and 'buyTicket' in str(path):
                 return wsgi.handleBuyTicket(request)
             elif ('POST' in str(request.method) and 'choosePlace' in str(path)):
