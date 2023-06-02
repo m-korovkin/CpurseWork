@@ -36,20 +36,15 @@ def handleGetAllTicketsAdmin(request):
 
 
 def handleChoosePlace(request):
-    """
-    Переход со страницы выбора рейса на страницу выбора места
-    """
-    # строка с кодом от формы
-    # body = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Форма</title><link rel="stylesheet" href="form.css"></head><body><div class="form-block-left"><form action="index.php" method="post" class="railway"><h3>Введите данные:</h3><span></span><div class="form-group"><div class="block-input"><input name="name"  onfocus="if(this.value=="ФИО") this.value='';" onblur="if(!this.value)this.value="ФИО";" type="text" value="ФИО"/></div> <div class="block-input"> <input name="email" onfocus="if(this.value=="Серия и номер паспорта") this.value="";" onblur="if(!this.value)this.value="Серия и номер паспорта";" type="text" value="Серия и номер паспорта"/> </div> <div class="block-input"><input name="phone" onfocus="if(this.value=="Номер телефона") this.value='';" onblur="if(!this.value)this.value="Номер телефона";" type="tel" value="Номер телефона"/></div></div><div class="submit-button"><input class="button" type="submit" value="Отправить"></div></form></div></body></html>'
-    # print(request.body.split('=')[1])
     trip_id = request.body.split('=')[1]
-    # Тут идет запрос в бд поиск рейса по id,по нему вытаскиваем все данные маршрута
+    print(trip_id)
+    # Получить по id маршрута свободные места в автобусе. Использовать их при формировании страницы.
     body = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title><link rel="stylesheet" href="choose_place.css"></head><body><div class="seatmap"><div class="seatmap_title"><span>Выберите место на схеме автобуса</span></div><div class="free_or_not"><div class="free"><span class="span_free"></span> - Свободное</div><div class="not_free"><span class="span_not_free"></span>- Занятое</div></div><div class="tir"><div class="tir_2"><div class="tir_3"><div class="tir_4"><div class="first_row">'
     for i in range(10):
-        body += f'<div class="ticket_place"><div class="block_span_{i+1}"><span>{i+1}</span></div></div>'
+        body += f'<div class="ticket_place"><div id="{trip_id}" class="block_span_{i+1}"><span>{i+1}</span></div></div>'
     body += '</div><div class="first_row">'
     for i in range(10):
-        body += f'<div class="ticket_place"><div class="block_span_{i+11}"><span>{i+11}</span></div></div>'
+        body += f'<div class="ticket_place"><div id="{trip_id}" class="block_span_{i+11}"><span>{i+11}</span></div></div>'
     body += '</div></div></div></div><style contenteditable>.ticket_place {border: 2px solid black;}</style></body></html>'
     body = body.encode('utf-8')
     
@@ -167,12 +162,14 @@ def handleReturnTicket(request):
 
 
 def handleCreateTicket(request):
-    print(request.body)
-    dataList = request.body.split('&')
-    for par in dataList:
-        print(par)
-    body = '2'
-    body = body.encode('utf-8')
+    dataList = [i.split('=') for i in request.body.split('&')]
+    newTrip = Trip(111, dataList[0][1], dataList[1][1], dataList[2][1], dataList[3][1], dataList[4][1], '00000000000000000000', dataList[5][1], dataList[6][1])
+    try:
+        with open(f'{directoryName}/admin.html', 'rb') as page:
+            body = page.read()
+    except Exception as e:
+        body = f'{e}'
+        body = body.encode('utf-8')
     content_type = 'text/html; charset=uft-8'
     status, reason = '202', 'Created'
     headers = [('Content-Type', content_type), ('Content-Length', len(body))]
