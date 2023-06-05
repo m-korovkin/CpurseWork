@@ -16,7 +16,9 @@
 
 }
 
-
+.in-block{
+    display: inline-block;
+}
 
 .route{
     width: 550px;
