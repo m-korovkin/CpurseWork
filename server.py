@@ -86,7 +86,9 @@ class HTTPServer:
             elif 'POST' in str(request.method) and 'buyTicket' in str(path):
                 return wsgi.handleBuyTicket(request)
             elif ('POST' in str(request.method) and 'choosePlace' in str(path)):
-                return wsgi.handleChoosePlace(request)
+                return wsgi.handleGetAllPlaces(request)
+            elif 'POST' in str(request.method) and 'passportData' in str(path):
+                return wsgi.handleGetPassportData(request)
             elif ('POST' in str(request.method) and 'enterAdminPanel' in str(path)):
                 return wsgi.handleLoginAdmin(request)
             elif 'POST' in str(request.method) and 'returnTicket' in str(path):
