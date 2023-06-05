@@ -84,6 +84,8 @@ class HTTPServer:
             elif 'POST' in str(request.method) and 'createTicket' in str(path):
                 return wsgi.handleCreateTicket(request)
             elif 'POST' in str(request.method) and 'buyTicket' in str(path):
+                return wsgi.afterShowTicket(request)
+            elif 'POST' in str(request.method) and 'backToMain' in str(path):
                 return wsgi.handleBuyTicket(request)
             elif ('POST' in str(request.method) and 'choosePlace' in str(path)):
                 return wsgi.handleGetAllPlaces(request)

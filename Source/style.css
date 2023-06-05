@@ -473,3 +473,10 @@ nav {
   display: inline;
   padding: 0 40px;
 }
+
+
+
+.tick h2{
+    margin: 3%;
+    font-size: 2em;
+}

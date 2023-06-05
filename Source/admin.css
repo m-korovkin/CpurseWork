@@ -126,4 +126,80 @@ h1{
 }
 
 
+.note{
+    display: inline-block;
+    margin-left: 7%;
+    font-size: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import "https://fonts.googleapis.com/css?family=Rubik+Mono+One";
+body {
+  overflow-x: hidden;
+  font-family: 'Rubik Mono One', sans-serif;
+  padding: 30px;
+  text-align: center;
+}
+
+.kespatares {
+  color: white;
+  font-size: 0;
+  line-height: 1;
+}
+.kespatares span {
+  font-size: 30px;
+  display: inline-block;
+  -webkit-animation: move 2s ease-in-out ;
+          animation: move 2s ease-in-out ;
+}
+
+
+@-webkit-keyframes move {
+  0% {
+    -webkit-transform: translate(-33%, 0);
+            transform: translate(-33%, 0);
+  }
+  50% {
+    text-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    -webkit-transform: translate(33%, 0);
+            transform: translate(33%, 0);
+  }
+}
+
+@keyframes move {
+  0% {
+    -webkit-transform: translate(-33%, 0);
+            transform: translate(-33%, 0);
+  }
+  50% {
+    text-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    -webkit-transform: translate(33%, 0);
+            transform: translate(33%, 0);
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
 
