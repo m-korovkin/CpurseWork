@@ -1,6 +1,5 @@
 .main{
     width: 1350px;
-    height: 60px;
     text-align: center;
     margin: auto;
     font-size: 14px;
@@ -420,3 +419,57 @@ input{
     border: 1px solid black;
 }
 
+.header_div ul {
+  list-style: none; /*убираем маркеры списка*/
+  margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
+  padding-left: 0; /*убираем левый отступ, равный 40px*/
+}
+.header_div a {text-decoration: none; /*убираем подчеркивание текста ссылок*/}
+
+
+
+body {margin:0;}
+h2 {
+  font-family: monospace;
+  color: #606060;
+}
+ul {
+  list-style: none; 
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  font-family: 'Lora', serif;
+  transition: .5s linear;
+}
+i {
+  margin-right: 10px;
+}
+nav {
+  display: block;
+  width: 100%;
+  margin: 0 auto 10px;
+  padding-top: 3px;
+}
+.one ul {
+  padding: 1em 0;
+  background: rgb(249, 37, 63);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.one a {
+  padding: 1em;
+  background: rgb(249, 37, 63);
+  border-left: 1px dashed; #b19891;
+  border-right: 1px dashed; #b19891;
+  color: white;
+}
+.one a:hover {
+    background: #b12821;
+  border-left: 1px dotted; #b19891;
+  border-right: 1px dotted; #b19891;
+}
+.one li {
+  display: inline;
+  padding: 0 40px;
+}

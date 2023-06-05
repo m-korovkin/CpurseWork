@@ -70,7 +70,7 @@
 
 .tir_4{
     width: 742px;
-    height: 400px;
+    height: 460px;
     position: relative;
     display: flex;
     flex-decoration: column;
@@ -95,11 +95,11 @@
 
 
 .ticket_place{
-    width: 58px;
-    height: 58px;
+    width: 80px;
+    height: 80px;
     position: relative;
     display: inline-block;
-    margin: 8px;
+    margin: 6px;
     font-size: 14px;
     text-align: center;
     vertical-align: top;

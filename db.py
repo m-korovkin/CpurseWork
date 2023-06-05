@@ -1,3 +1,4 @@
+import datetime
 import sqlite3 as db
 from models import Trip
 import config
@@ -50,6 +51,24 @@ def tripAppend1():
 	for el in data:
 		print(el)
 	
+
+def getPlacesByID(id_):
+	try:
+		dbName = 'my.db'
+		con = db.connect(dbName)
+		cur = con.cursor()
+		sql = f'SELECT * FROM trip WHERE id_={id_}'
+		res = cur.execute(sql)
+		return res
+	except Exception as e:
+		print(f'[{datetime.datetime.now()}] [ERROR] [{e}]')
+		returnList = [el.free_places for el in config.tripList if el.id == id_]
+		for row in returnList:
+			print(row)
+		return returnList
+
+		#for el in config.tripList:
+			#if el.id == id_
 
 
 def databaseTest():
